@@ -3,7 +3,7 @@ from flask_script import Manager, Server
 from flask_migrate import Migrate, MigrateCommand
 from flask_admin.contrib.sqla import ModelView
 
-app = create_app('production')
+app = create_app('development')
 manager = Manager(app)
 manager.add_command('server',Server)
 
