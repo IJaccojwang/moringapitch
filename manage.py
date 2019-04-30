@@ -2,6 +2,7 @@ from app import create_app,db, admin
 from flask_script import Manager, Server
 from flask_migrate import Migrate, MigrateCommand
 from flask_admin.contrib.sqla import ModelView
+from app.models import User,Comment
 
 app = create_app('development')
 manager = Manager(app)

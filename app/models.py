@@ -22,19 +22,19 @@ class User():
 
     def __init__(self, username, email, bio, password):
 
-    self.username = username
-    self.email = email
-    self.bio = bio
-    self.password = password
+        self.username = username
+        self.email = email
+        self.bio = bio
+        self.password = password
 
 class Pitch():
 
     def __init__(self, title, description, cohort, github_link):
 
-    self.title = title
-    self.description = title
-    self.cohort = title
-    self.github_link
+        self.title = title
+        self.description = title
+        self.cohort = title
+        self.github_link
 
 class Comment(db.Model):
 
