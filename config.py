@@ -7,6 +7,7 @@ class Config:
     UPLOADED_PHOTOS_DEST = 'app/static/photos'
     SECRET_KEY = os.environ.get('SECRET_KEY')
     
+    
     #email configurations
     MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 587
@@ -24,7 +25,8 @@ class ProdConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+    
+    SQLALCHEMY_DATABASE_URI = "postgresql+psycopg2://moringa:augustine@localhost/moringapitch"
 
 class TestConfig(Config):
     '''
@@ -38,6 +40,10 @@ class DevConfig(Config):
         Config: The parent configuration class with General configuration settings
     '''
     DEBUG = True
+
+
+    SQLALCHEMY_DATABASE_URI = "postgresql+psycopg2://moringa:augustine@localhost/moringapitch"
+    SECRET_KEY = '12345'
 
 config_options = {
 'development': DevConfig,
