@@ -1,11 +1,9 @@
 from . import db
 from flask import current_app
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
-from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
 from . import db,login_manager
 from datetime import datetime
-from . import admin
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -46,21 +44,6 @@ class User(db.Model, UserMixin):
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
 
 
-class Pitch():
-
-    def __init__(self, title, description, cohort, github_link):
-
-    self.title = title
-    self.description = title
-    self.cohort = title
-    self.github_link
-
-class Comment():
-
-    def __init__(self, description, pitch_id):
-
-    self.description = description
-    self.pitch_id = pitch_id
 
  
 
