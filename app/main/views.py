@@ -40,12 +40,12 @@ def star(pitch_id):
     pitch = Post.query.get(pitch_id)
     user = current_user
     pitch_stars = Star.query.filter_by(pitch_id=pitch_id)
-    pitchs = Post.query.order_by(Post.pitched_p.desc()).all()
+    pitches = Post.query.order_by(Post.pitched_p.desc()).all()
 
     if Star.query.filter(Star.user_id == user.id, Star.pitch_id == pitch_id).first():
-        return render_template('pitchs.html', pitchs=pitchs)
+        return render_template('pitches.html', pitches=pitches)
 
     new_star = Star(pitch_id=pitch_id, user=current_user)
     new_star.save_stars()
     
-    return render_template('pitchs.html', pitchs=pitchs)
+    return render_template('pitches.html', pitches=pitches)
