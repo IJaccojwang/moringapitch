@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2"></div>
+            {% for pitch in pitches %}
+    <div class="col-md-8">
+    <div class="card card-image" style="background-image: url(https://gocode.academy/wp-content/uploads/2018/06/09-05-2017-why-coding-infographic-blog.png);">
+
+      <!-- Content -->
+      <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+        <div>
+          <h1 class="card-title pt-2"><strong>{{pitch.title}}</strong></h1>
+          <p style="font-size:13px;text-align: justify"> {{pitch.description}}</p>
+          <a href="{{url_for('main.new_comment',pitch_id = pitch.id)}}" class="btn btn-primary"> Add a comment</a>
+        </div>
+        
+      </div>
+    
+    </div>
+    <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
+        <ul class="list-unstyled list-inline font-small">
+          <li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>{{pitch.pitched_p}}</li>
+          <li class="list-inline-item pr-2">
+            <a class="white-text" href="{{url_for('main.star',pitch_id = pitch.id)}}"><i class="far fa-star"></i> Stars {{pitch.stars.count()}} </a></li>
+            {% if current_user.username == 'a' %}
+          <li><a href="/pitch/{{pitch.id}}/edit" class="btn btn-warning">Edit pitch</a></li>
+          <li><a href="/pitch/{{pitch.id}}/delete" class="btn btn-red">Delete pitch</a></li>
+            {% endif %}
+          <input type=hidden value="{{ next or '' }}" name=next>
+        </ul>
+      </div>
+      <hr>
+      <h3 class="text-center">Comments</h3>
+    </div>
+                
+                
+    {% endfor %}
+    <div class="col-md-2"></div>
+        <div class="col-md-4">
+            
+        </div>
+    </div>
+    {% if comments %}
+	<div class="row text-center">
+			{% for comment in comments %}
+				<div class="col-md-4">
+<!-- Card -->
+<div class="card card-image" style="background-image: url();">
+
+  <!-- Content -->
+  <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+    <div>
+      <h3 class="card-title pt-2"><strong>{{ comment.comment}}</strong></h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam, voluptatem,
+        optio vero odio nam sit officia accusamus minus error nisi architecto nulla ipsum dignissimos.
+        Odit sed qui, dolorum!.</p>
+        <h5>By: {{comment.user.username}}</h5>
+    </div>
+  </div>
+
+</div>
+		<hr>
+					</div>
+			{% endfor %}
+		</div>
+			{% else %}
+
+			<h3>No comments</h3>
+			{%endif%}
+</div>
+
+{% endblock %}
