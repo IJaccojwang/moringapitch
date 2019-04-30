@@ -36,12 +36,21 @@ class Pitch():
     self.cohort = title
     self.github_link
 
-class Comment():
+class Comment(db.Model):
 
-    def __init__(self, description, pitch_id):
+    __tablename__ = 'comments'
 
-    self.description = description
-    self.pitch_id = pitch_id
+    id = db.Column(db.Integer,primary_key = True)
+    comment = db.Column(db.String)
+
+    def save_comment(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_comments(cls,id):
+        comments = Comments.query.filter_by(post_id=id).all()
+        return comments
 
  
 

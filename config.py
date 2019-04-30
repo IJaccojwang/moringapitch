@@ -38,6 +38,7 @@ class DevConfig(Config):
         Config: The parent configuration class with General configuration settings
     '''
     DEBUG = True
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://stephenotieno:ijacco@localhost/moringa'
 
 config_options = {
 'development': DevConfig,
