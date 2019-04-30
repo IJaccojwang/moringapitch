@@ -1,0 +1,5 @@
+inastance/
+.vscode/
+*.pyc
+virtual/
+/start.sh
