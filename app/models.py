@@ -10,17 +10,6 @@ from . import admin
 # def load_user(user_id):
 #     return User.query.get(int(user_id))
 
-
-class Quote:
-    '''
-    Quote class to define Quote Objects
-    '''
-
-    def __init__(self, author, quote):
-        self.author = author
-        self.quote = quote
-
-
 class Pitch(db.Model):
 
     __tablename__ = 'pitches'
@@ -64,11 +53,6 @@ class Comment(db.Model):
 
     def __repr__(self):
         return f"Pitch {self.pitch}','{self.date}')"
-
-
-class Comment():
-
-    def __init__(self, description, pitch_id):
 
 
 class User(UserMixin,db.Model):
