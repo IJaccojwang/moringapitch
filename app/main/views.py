@@ -1,14 +1,11 @@
 from flask import render_template, request, redirect, url_for, abort
 from flask_login import login_required, current_user
 from . import main
-<<<<<<< HEAD
 from .forms import PitchForm
 from ..models import Pitch
 from .. import db, photos
 import markdown2
-=======
-from .. import db
->>>>>>> origin/authentication
+
 
 
 pitch = [
