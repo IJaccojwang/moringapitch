@@ -1,9 +1,10 @@
 from . import db
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask import current_app
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from flask_login import UserMixin
-from . import login_manager
+from . import db,login_manager
 from datetime import datetime
-from . import admin
 
 
 # @login_manager.user_loader
@@ -31,6 +32,10 @@ class Pitch(db.Model):
     def get_pitches(cls,id):
         pitches = Post.query.order_by(pitch_id=id).desc().all()
         return pitches
+    
+    def __repr__(self):
+        return f"Pitch {self.pitch}','{self.date}')"
+
 
 class Comment(db.Model):
 
@@ -51,37 +56,38 @@ class Comment(db.Model):
         comments = Comments.query.filter_by(pitch_id=id).all()
         return comments
 
-    def __repr__(self):
-        return f"Pitch {self.pitch}','{self.date}')"
 
-
-class User(UserMixin,db.Model):
+class User(db.Model, UserMixin):
+    
     __tablename__ = 'users'
 
-    id = db.Column(db.Integer,primary_key = True)
-    username = db.Column(db.String(255),index = True)
-    email = db.Column(db.String(255),unique = True,index = True)
-    bio = db.Column(db.String(255))
-    profile_pic_path = db.Column(db.String())
-    password_hash = db.Column(db.String(255))
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(20), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
+    password = db.Column(db.String(60), nullable=False)
     pitch = db.relationship('Post', backref='user', lazy='dynamic')
     comment = db.relationship('Comment', backref='user', lazy='dynamic')
     stars = db.relationship('Star', backref='user', lazy='dynamic')
 
-    @property
-    def password(self):
-        raise AttributeError('You cannnot read the password attribute')
 
-    @password.setter
-    def password(self, password):
-        self.password_hash = generate_password_hash(password)
+    def get_reset_token(self, expires_sec=1800):
+        s = Serializer(current_app.config['SECRET_KEY'], expires_sec)
+        return s.dumps({'user_id': self.id}).decode('utf-8')
 
+    @staticmethod
+    def verify_reset_token(token):
+        s = Serializer(current_app.config['SECRET_KEY'])
+        try:
+            user_id = s.loads(token)['user_id']
+        except:
+            return None
+        return User.query.get(user_id)
 
-    def verify_password(self,password):
-        return check_password_hash(self.password_hash,password)
 
     def __repr__(self):
-        return f'User {self.username}'
+        return f"User('{self.username}', '{self.email}', '{self.image_file}')"
+
 
 
 class Star(db.Model):
