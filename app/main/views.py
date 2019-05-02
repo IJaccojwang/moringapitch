@@ -14,7 +14,15 @@ def index():
     '''
     title = 'Home - Welcome to Moringa Pitch'
     pitches = Pitch.query.order_by(Pitch.pitched_p.desc()).all()
-    return render_template('index.html', title = title, pitch = pitch)
+    return render_template('index.html', title = title, pitches = pitches)
+
+@main.route('/about')
+def about():
+    '''
+    View root page function that returns the index page and its data
+    '''
+    title = 'About - Welcome to Moringa Pitch'
+    return render_template('about.html', title = title)
 
 @main.route('/pitches')
 def pitches():
