@@ -5,8 +5,9 @@ from wtforms.validators import Required, Email, Length
 
 class PitchForm(FlaskForm):
     title = StringField('Title', validators=[Required()])
-    text = TextAreaField('Description', validators=[Required()])
-    category = SelectField('github', validators=[Required()])
+    description = TextAreaField('Description', validators=[Required()])
+    owners = TextAreaField('Owners/Members', validators=[Required()])
+    cohort = StringField('Cohort', validators=[Required()])
     submit = SubmitField('Post')
 
 class CommentForm(FlaskForm):
