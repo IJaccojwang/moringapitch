@@ -150,3 +150,10 @@ body {
   width: 340px;
   height: 480px;
 }
+hr.type_5 {
+  border: 0;
+  height: px;
+  background-image: url('https://pngimage.net/wp-content/uploads/2018/05/decorative-horizontal-line-png-3.png');
+  background-repeat: no-repeat;
+  align-items: center;
+}
