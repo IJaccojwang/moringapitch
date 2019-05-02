@@ -2,7 +2,7 @@ from flask import render_template, request, redirect, url_for, abort
 from flask_login import login_required, current_user
 from . import main
 from .forms import PitchForm, CommentForm
-from ..models import Pitch, Comment
+from ..models import Pitch, Comment, Star
 from .. import db
 import markdown2
 
@@ -24,12 +24,12 @@ def about():
     title = 'About - Welcome to Moringa Pitch'
     return render_template('about.html', title = title)
 
-@main.route('/pitches')
-def pitches():
+@main.route('/pitches/<cohort>')
+def pitches(cohort):
     '''
     View root page function that returns the index page and its data
     '''
-    pitches = Pitch.query.order_by(Pitch.pitched_p.desc()).all()
+    pitches = Pitch.query.filter_by(cohort=cohort).order_by(Pitch.pitched_p.desc()).all()
     return render_template('pitches.html', pitches=pitches)
 
 @main.route('/pitch/<int:id>')
@@ -44,6 +44,7 @@ def pitch(id):
     return render_template('pitch.html',pitches = pitches,comments = comments)
 
 @main.route('/pitch/new', methods=['GET', 'POST'])
+@login_required
 def new_pitches():
     form = PitchForm()
     if form.validate_on_submit():
@@ -51,9 +52,13 @@ def new_pitches():
         description = form.description.data
         owners = form.owners.data
         cohort = form.cohort.data
+        technologies = form.technologies.data
 
-        new_pitch = Pitch(title=title, description=description, owners=owners, cohort=cohort)
+        new_pitch = Pitch(title=title, description=description, owners=owners,technologies=technologies, cohort=cohort, user_p=current_user._get_current_object().id)
         new_pitch.save_pitch()
+        
+        pitches = Pitch.query.order_by(Pitch.pitched_p.desc()).all()
+        return render_template('pitches.html', pitches=pitches)
 
     title = 'New Pitch'
     return render_template('new_pitch.html', title=title, pitch_form=form)

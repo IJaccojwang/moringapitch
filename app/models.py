@@ -21,6 +21,7 @@ class Pitch(db.Model):
     description = db.Column(db.String)
     owners = db.Column(db.String)
     cohort = db.Column(db.String)
+    technologies = db.Column(db.String)
     comments = db.relationship('Comment', backref='pitch', lazy='dynamic')
     stars = db.relationship('Star', backref='pitch', lazy='dynamic')
     pitched_p = db.Column(db.DateTime,default=datetime.utcnow)
