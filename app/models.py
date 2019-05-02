@@ -102,17 +102,6 @@ class User(db.Model, UserMixin):
             return None
         return User.query.get(user_id)
 
-    @property
-    def password(self):
-        raise AttributeError('You cannot read the password attritube')
-
-    @password.setter
-    def password(self, password):
-        self.password_hash = generate_password_hash(password)
-
-    def verify_password(self,password):
-        return check_password_hash(self.password_hash,password)
-
 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
