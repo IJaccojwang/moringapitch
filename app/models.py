@@ -7,9 +7,9 @@ from . import db,login_manager
 from datetime import datetime
 
 
-# @login_manager.user_loader
-# def load_user(user_id):
-#     return User.query.get(int(user_id))
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 class Pitch(db.Model):
 
@@ -30,7 +30,7 @@ class Pitch(db.Model):
 
     @classmethod
     def get_pitches(cls,id):
-        pitches = Post.query.order_by(pitch_id=id).desc().all()
+        pitches = Pitch.query.order_by(pitch_id=id).desc().all()
         return pitches
     
     def __repr__(self):
@@ -66,7 +66,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(120), unique=True, nullable=False)
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     password = db.Column(db.String(60), nullable=False)
-    pitch = db.relationship('Post', backref='user', lazy='dynamic')
+    pitch = db.relationship('Pitch', backref='user', lazy='dynamic')
     comment = db.relationship('Comment', backref='user', lazy='dynamic')
     stars = db.relationship('Star', backref='user', lazy='dynamic')
 
