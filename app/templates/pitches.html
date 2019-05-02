@@ -25,17 +25,12 @@
       </a>
     </div>
     <div class="card-body light-green darken-2 text-white">
-        <h4 class="card-title">{{pitch.title}}</h4>
+        <h5 class="card-title">{{pitch.title}}</h5>
       <hr>
-      <p style="font-size:13px;text-align: justify"> {{pitch.description|truncate(425)}} </p>
-      <div class="text-white text-center d-flex align-items-center ">
-          <div>
-            <a href="{{url_for('main.new_comment',pitch_id = pitch.id)}}" class="btn btn-light-green darken-1">Comments</a>
-          </div>
-          
-        </div>
-      <!-- Link -->
-      <a href="#!" class="white-text d-flex justify-content-end"><p>More <i class="fas fa-angle-double-right"></i></p></a>
+      <p style="font-size:13px;text-align: justify"> {{pitch.description|truncate(60)}} </p>
+      <a href="/pitch/{{pitch.id}}" class="white-text d-flex justify-content-end"><p>More <i class="fas fa-angle-double-right"></i></p></a>
+      <a href="{{url_for('main.new_comment',pitch_id = pitch.id)}}" class="btn btn-light-green darken-1">Comments</a>
+
   
     </div>
     <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
