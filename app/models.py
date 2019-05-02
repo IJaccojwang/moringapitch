@@ -49,17 +49,31 @@ class Comment(db.Model):
     comment = db.Column(db.String)
     pitched_c = db.Column(db.DateTime,default=datetime.utcnow)
     pitch_id = db.Column(db.Integer, db.ForeignKey("pitches.id"), nullable=False)
-    user_c = db.Column(db.Integer,db.ForeignKey("users.id"), nullable=False)
-
+    user_c = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    
     def save_comment(self):
         db.session.add(self)
         db.session.commit()
 
     @classmethod
+    def get_comments(cls,pitch):
+        comments = Comment.query.filter_by(pitchit = pitch).all()
+        return comments
+
+    @classmethod
+    def delete_comment(cls,id):
+        comment = Comment.query.filter_by(id=id).first()
+        db.session.delete(comment)
+        db.session.commit()
+
+
+
+    @classmethod
     def get_comments(cls,id):
         comments = Comments.query.filter_by(pitch_id=id).all()
         return comments
-
+    def __repr__(self):
+        return f'Comment{self.comment}'
 
 class User(db.Model, UserMixin):
     
@@ -87,6 +101,17 @@ class User(db.Model, UserMixin):
         except:
             return None
         return User.query.get(user_id)
+
+    @property
+    def password(self):
+        raise AttributeError('You cannot read the password attritube')
+
+    @password.setter
+    def password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def verify_password(self,password):
+        return check_password_hash(self.password_hash,password)
 
 
     def __repr__(self):
