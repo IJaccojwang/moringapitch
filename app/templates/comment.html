@@ -3,7 +3,25 @@
 
 {% block content %}
 <div class="container">
-    {{wtf.quick_form(form)}}
+		
+		  <br>
+		  <img src="https://pngimage.net/wp-content/uploads/2018/05/decorative-horizontal-line-png-3.png" height="126px"
+		  	width="1024px">
+		  <br>
+
+		  <div class="row">
+		  	<div class="col-md-3" style="align-content:right"><img
+		  			src="https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/566/s200/10710615-512708608864666-6379526937469666187-n.png"
+		  			height="160px" width="200px">
+		  	</div>
+		  	<div class="col-md-7">
+		  		{{wtf.quick_form(form)}}
+		  	</div>
+		  	<div class="col-md-2"></div>
+
+		  </div>
+		  <br>
+		  <hr>
 
 		<div>
 			<h3>Comments for {{pitch.title}}</h3>
