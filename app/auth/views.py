@@ -73,14 +73,14 @@ def user_posts(username):
         .paginate(page=page, per_page=5)
     return render_template('user_posts.html', posts = posts, user = user)
 
-@auth.route("/user/<string:username>")
-def user_comments(username):
-    user = User.query.filter_by(username=username).first_or_404()
-    page = request.args.get('page', 1, type=int)
-    comments = Comment.query.filter_by(author=user)\
-        .order_by(Comment.date_posted.desc())\
-        .paginate(page=page, per_page=5)
-    return render_template('user_comments.html', comments = comments, user = user)
+# @auth.route("/user/<string:username>")
+# def user_comments(username):
+#     user = User.query.filter_by(username=username).first_or_404()
+#     page = request.args.get('page', 1, type=int)
+#     comments = Comment.query.filter_by(author=user)\
+#         .order_by(Comment.date_posted.desc())\
+#         .paginate(page=page, per_page=5)
+#     return render_template('user_comments.html', comments = comments, user = user)
 
 @auth.route("/reset_password", methods=['GET', 'POST'])
 def reset_request():

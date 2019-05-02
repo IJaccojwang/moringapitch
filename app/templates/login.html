@@ -7,6 +7,17 @@
 {% endblock %}
 
 {% block content %}
+<main role="main" class="container">
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
     <div class="content-section">
         <form method="POST" action="">
             {{ form.hidden_tag() }}
@@ -56,4 +67,5 @@
             Need An Account? <a class="ml-2" href="{{ url_for('auth.register') }}">Sign Up Now</a>
         </small>
     </div>
+    </main>
 {% endblock content %}
