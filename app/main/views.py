@@ -41,10 +41,10 @@ def new_pitches():
     if form.validate_on_submit():
         title = form.title.data
         description = form.description.data
-        github_link = form.github_link.data
+        owners = form.owners.data
+        cohort = form.cohort.data
 
-        new_pitch = Pitch(title=title, description=description,
-                          github_link=github_link)
+        new_pitch = Pitch(title=title, description=description, owners=owners, cohort=cohort)
         new_pitch.save_pitch()
 
     title = 'New Pitch'
