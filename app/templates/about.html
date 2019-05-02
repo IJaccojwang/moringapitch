@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+<!-- Styles block -->
+
+{% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% endblock %}
+
+<!-- Content block -->
+{% block content %}
+
+<div class="jumbotron text-center">
+    <h1 style="font-size:25px; font-family: 'Akronim', cursive">WHAT IS MORINGA PITCH?</h1>
+    <p style="font-size:25px; font-family: 'Akronim', cursive"> IMAGINE SOMEWHERE YOU CAN HAVE A SNEAK PEEK OF ALL THE GREAT CONCEPTS AND IDEAS THAT 
+        HAVE BEEN DEVELOPED BY MORINGA STUDENTS. A PLACE WITH REFRESHING, CREATIVE IDEAS THAT CAN 
+        CHANGE YOUR PERSPECTIVE ON HOW YOU VIEW THE WORLD AND ALL THAT IS IN IT.</p>
+    <p style="font-size:25px; font-family: 'Akronim', cursive"> WELL, IMAGINE NO MORE. YOU ARE ALREADY HERE.</p>    
+  </div>
+
+  <div class="container">
+      <div class="col-xs-12 col-sm-8">
+          <div class="panel style="style="border: 5px solid #FFBD00;  margin-top:10px;">
+                  <img class="img-center img-thumbnail img-fluid float-center pull-center mr-10 " src="{{url_for('static', filename='hello1.jpg' )}}" 
+                  height="600px;", width="800px"/>
+          </div>
+      </div>
+      </div>  
+
+
+  {% endblock %}
