@@ -5,38 +5,26 @@
 {% block styles%}
     {{ super() }}
     <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700i" rel="stylesheet">
 {% endblock %}
 
 <!-- Content block -->
 {% block content %}
-<div class="container">
-    <!-- Card -->
+<!-- Card -->
+<div class="card card-image" style="background-image: url(https://www.mitinclusiveinnovation.com/wp-content/uploads/2019/01/Moringa-School_Logo.png); background-size: 100% 100%; ">
 
+  <!-- Content -->
+  <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+    <div>
+      <h1 style="font-size:100px;font-family: 'Montserrat', sans-serif;">MORINGA PITCH</h1>
+      <h3 class="card-title pt-2"><strong>WHERE WONDERFUL IDEAS MEET GREAT DEVELOPERS</strong></h3>
+      <p style="margin-bottom:5%">Get access to projects done my previous cohorts to get your imagnation going. See a project you can improve, change or approach in a totally new manner. Go ahead - test the waters, give feedback and have fun</p>
+      <a class="btn btn-green darken-2" href="/about" ><i class="fas fa-clone left"></i>About</a>
 
-<div class="card card-cascade wider reverse">
-
-    <!-- Card image -->
-    <div class="card-body card-body-cascade text-center">
-  
-        <!-- Title -->
-      
-        <!-- Subtitle -->
-        <h1 style="font-size:60px; font-family: 'Akronim', cursive">WELCOME TO MORINGA PITCH</h1>
-        <p style="font-size:30px; font-family: 'Akronim', cursive"> WHERE WONDERFUL IDEAS MEET GREAT DEVELOPERS</p>
-    
-  
-    <div class="view view-cascade overlay">
-      <img class="card-img-top" src="{{url_for('static', filename='m2.png' )}}" alt="Card image cap" 
-      height="100%", width="100%">
-      
-        <div class="mask rgba-white-slight"></div>
-      </a>
     </div>
-</div>
-    <!-- Card content -->
-  
-  
   </div>
+
+</div>
 </div>
 
   <!-- Card -->
