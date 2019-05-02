@@ -2,7 +2,7 @@
 
 ## Description
 
-Moringapitch is a flask application providing acces to all capstone projects Moringa School Students undertook allowing users to also pitch project ideas to be viewed by other users
+Moringapitch is a flask application providing access to all capstone projects Moringa School Students undertook allowing users to also pitch project ideas to be viewed by other users
 
 #### Authors
 

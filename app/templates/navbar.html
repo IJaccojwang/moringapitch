@@ -1,39 +1,54 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark  light-green darken-2 ">
 
-    <a class="navbar-brand" href="/"><h3 style="font-size:20px; font-family: 'Akronim', cursive">MORINGA PITCH</h3></a>
-  
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
-      aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="basicExampleNav">
-  
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/"><h3 style="font-size:20px; font-family: 'Akronim', cursive">Home</h3>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/about"><h3 style="font-size:20px; font-family: 'Akronim', cursive">About</h3>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/"><h3 style="font-size:20px; font-family: 'Akronim', cursive">Home</h3>
-          </a>
-        </li>
+  <a class="navbar-brand" href="/">
+    <img src="{{url_for('static', filename='nav.png' )}}" height="55" alt="mdb logo">
+  </a>
+
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="basicExampleNav">
+
+    <ul class="navbar-nav mr-auto">
+      
+        <li><a class="nav-link" href="/"><h3 style="font-size:20px; font-family: 'Akronim', cursive">Home</h3>
+        </a></li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">Cohort</a>
+            <div class="dropdown-menu dropdown-primary " aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item"  href="/pitches/mc1">MC1</a>
+              <a class="dropdown-item"  href="/pitches/mc2">MC2</a>
+              <a class="dropdown-item"  href="/pitches/mc3">MC3</a>
+              <a class="dropdown-item"  href="/pitches/mc4">MC4</a>
+              <a class="dropdown-item"  href="/pitches/mc5">MC5</a>
+              <a class="dropdown-item"  href="/pitches/mc6">MC6</a>
+              <a class="dropdown-item"  href="/pitches/mc7">MC7</a>
+              <a class="dropdown-item"  href="/pitches/mc8">MC8</a>
+              <a class="dropdown-item"  href="/pitches/mc9">MC9</a>
+              <a class="dropdown-item"  href="/pitches/mc10">MC10</a>
+              <a class="dropdown-item"  href="/pitches/mc11">MC11</a>
+              <a class="dropdown-item"  href="/pitches/mc12">MC12</a>
+              <a class="dropdown-item"  href="/pitches/mc13">MC13</a>
+            </div>
+          </li>
+        <li><a class="nav-link" href="/about"><h3 style="font-size:20px; font-family: 'Akronim', cursive">About</h3>
+        </a></li>
       </ul>
+    
 
-      <div class="navbar-nav">
-        {% if current_user.is_authenticated %}
-        <a class="nav-item nav-link" href="{{url_for('auth.account')}}">Account</a>
-        <a class="nav-item nav-link" href="{{url_for('auth.logout')}}">Log out</a>
-        {% else %}
-        <a class="nav-item nav-link" href="{{url_for('auth.login')}}">Login</a>
-        <a class="nav-item nav-link" href="{{url_for('auth.register')}}">Register</a>
-        {% endif %}
-      </div>
+    <div class="nav navbar-nav navbar-right">
+      {% if current_user.is_authenticated %}
+      <a class="nav-item nav-link" href="{{url_for('auth.account')}}"><h3 style="font-size:20px; font-family: 'Akronim', cursive ">Account</a></h3>
+      <a class="nav-item nav-link" href="{{url_for('auth.logout')}}"><h3 style="font-size:20px; font-family: 'Akronim', cursive">Log out</a></h3>
+     {% else %}
+      <a class="nav-item nav-link" href="{{url_for('auth.login')}}"><h3 style="font-size:20px; font-family: 'Akronim', cursive ">Login</a></h3>
+      <a class="nav-item nav-link" href="{{url_for('auth.register')}}"><h3 style="font-size:20px; font-family: 'Akronim', cursive">Register</a></h3>
+      {% endif %}
+    </div>
 
-  
-  </nav>
-  
+
+</nav>
