@@ -34,7 +34,7 @@ class Pitch(db.Model):
         return pitches
     
     def __repr__(self):
-        return f"Pitch {self.pitch}','{self.date}')"
+        return f"Pitch {self.title}','{self.pitched_p}')"
 
 
 class Comment(db.Model):

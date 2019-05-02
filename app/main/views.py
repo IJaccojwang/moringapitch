@@ -13,7 +13,7 @@ def index():
     View root page function that returns the index page and its data
     '''
     title = 'Home - Welcome to Moringa Pitch'
-    pitches = Pitch.query.order_by(Pitch.pitcheed_p.desc()).all()
+    pitches = Pitch.query.order_by(Pitch.pitched_p.desc()).all()
     return render_template('index.html', title = title, pitch = pitch)
 
 @main.route('/pitches')
@@ -22,7 +22,7 @@ def pitches():
     View root page function that returns the index page and its data
     '''
     pitches = Pitch.query.order_by(Pitch.pitched_p.desc()).all()
-    return render_template('pitch.html', pitches=pitches)
+    return render_template('pitches.html', pitches=pitches)
 
 @main.route('/pitch/<int:id>')
 def pitch(id):
@@ -33,7 +33,7 @@ def pitch(id):
     pitches = Pitch.query.filter_by(id=id)
     comments = Comment.query.filter_by(pitch_id=id).all()
 
-    return render_template('pitches.html',pitches = pitches,comments = comments)
+    return render_template('pitch.html',pitches = pitches,comments = comments)
 
 @main.route('/pitch/new', methods=['GET', 'POST'])
 def new_pitches():
