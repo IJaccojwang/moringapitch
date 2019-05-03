@@ -7,89 +7,88 @@
             {% for pitch in pitches %}
     <div class="col-md-8">
         <div class="card">
-
-            <!--Card image-->
-            <img class="card-img-top" src="http://disrupt-africa.com/wp-content/uploads/2015/01/Moringa-School-logo-2.png" alt="Card image cap">
           
             <!--Card content-->
             <div class="card-body">
-          
-              <!-- Container -->
-              <div class="d-block d-md-flex">
-          
-                <!-- Column -->
-                <div class="p-3 flex-1">
-          
-                  <h2 class="pb-3 font-weight-bold">Title of the news</h2>
-                  <p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          
-                </div>
-                <!-- Column -->
-          
-                <!-- Column -->
-                <div class="p-3 flex-1">
-          
-                  <h2 class="pb-3 font-weight-bold">Title of the news</h2>
-                  <p align="justify">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                    architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur
-                    aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-                    Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed
-                    quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut
-                    enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut
-                    aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-                    esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-          
-                </div>
-                <!-- Column -->
-          
-                <!-- Column -->
-                <div class="p-3 flex-1">
-          
-                  <h2 class="pb-3 font-weight-bold">Title of the news</h2>
-                  <p align="justify">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                    praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint
-                    occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id
-                    est laborum et dolorum fuga.</p>
-          
-                </div>
-                <!-- Column -->
-          
-              </div>
-              <!-- Container -->
+              <h1>{{pitch.title}}</h1>
+              <!--Section: Pricing v.2-->
+<section class="pb-3">
+  
+    <!--Grid row-->
+    <div class="row">
+      <!--Grid column-->
+      <div class="col-lg-4 col-md-12 mb-4">
+  
+        <!-- Card -->
+        <div class="card card-image" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/pricing-table%20(6).jpg');">
+  
+          <!--Pricing card-->
+          <div class="text-white text-center pricing-card d-flex align-items-center rgba-stylish-strong py-3 px-3">
+  
+            <!--Content-->
+            <div class="card-body">
+                <h2 class="pb-3 font-weight-bold">Description</h2>
+                <p align="justify">{{pitch.description}}</p>
+                <a class="white-text" href="{{url_for('main.star',pitch_id = pitch.id)}}"><i class="far fa-star"></i> Stars {{pitch.stars.count()}} </a></li>
+                <a href="{{url_for('main.new_comment',pitch_id = pitch.id)}}" class="btn btn-green darken-2"> Add a comment</a>
+            </div>
+  
+          </div>
+          <!--Pricing card-->
+        </div>
+      </div>
+      <!--Grid column-->
+  
+      <!--Grid column-->
+      <div class="col-lg-4 col-md-12 mb-4">
+  
+        <!-- Card -->
+        <div class="card card-image" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/pricing-table%20(4).jpg');">
+  
+          <!--Pricing card-->
+          <div class="text-white text-center pricing-card d-flex align-items-center rgba-indigo-strong py-3 px-3">
+  
+            <!--Content-->
+            <div class="card-body">
+              <h2 class="pb-3 font-weight-bold">Group Members</h2>
+                  <p align="justify">{{pitch.owners}}</p>
+            </div>
+  
+          </div>
+          <!--Pricing card-->
+        </div>
+      </div>
+      <!--Grid column-->
+  
+      <!--Grid column-->
+      <div class="col-lg-4 col-md-12 mb-4">
+  
+        <!-- Card -->
+        <div class="card card-image" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/pricing-table%20(6).jpg');">
+  
+          <!--Pricing card-->
+          <div class="text-white text-center pricing-card d-flex align-items-center rgba-stylish-strong py-3 px-3">
+  
+            <!--Content-->
+            <div class="card-body">
+                <h2 class="pb-3 font-weight-bold">Technologies</h2>
+                <p align="justify">{{pitch.technologies}}</p>
+        
+            </div>
+  
+          </div>
+          <!--Pricing card-->
+        </div>
+      </div>
+      <!--Grid column-->
+  
+    </div>
+    <!--Grid row-->
+  
+  </section>
           
             </div>
           </div>
-    <div class="card card-image" style="background-image: url();">
-
-      <!-- Content -->
-      <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
-        <div>
-          <h1 class="card-title pt-2"><strong>{{pitch.title}}</strong></h1>
-          <p style="font-size:13px;text-align: justify"> {{pitch.description}}</p>
-          <a href="{{url_for('main.new_comment',pitch_id = pitch.id)}}" class="btn btn-green darken-2"> Add a comment</a>
-        </div>
-        
-      </div>
-    
-    </div>
-    <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
-        <ul class="list-unstyled list-inline font-small">
-          <li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>{{pitch.pitched_p}}</li>
-          <li class="list-inline-item pr-2">
-            <a class="white-text" href="{{url_for('main.star',pitch_id = pitch.id)}}"><i class="far fa-star"></i> Stars {{pitch.stars.count()}} </a></li>
-            {% if current_user.username == 'a' %}
-          <li><a href="/pitch/{{pitch.id}}/edit" class="btn btn-warning">Edit pitch</a></li>
-          <li><a href="/pitch/{{pitch.id}}/delete" class="btn btn-red">Delete pitch</a></li>
-            {% endif %}
-          <input type=hidden value="{{ next or '' }}" name=next>
-        </ul>
-      </div>
       <hr>
       <h3 class="text-center">Comments</h3>
     </div>

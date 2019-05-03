@@ -5,28 +5,30 @@
 {% block styles%}
     {{ super() }}
     <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700i" rel="stylesheet">
 {% endblock %}
 
 <!-- Content block -->
 {% block content %}
+<div class="card card-image" style="background-image: url(https://www.mitinclusiveinnovation.com/wp-content/uploads/2019/01/Moringa-School_Logo.png); background-size: 100% 100%; ">
 
-<div class="jumbotron text-center">
-    <h1 style="font-size:25px; font-family: 'Akronim', cursive">WHAT IS MORINGA PITCH?</h1>
-    <p style="font-size:25px; font-family: 'Akronim', cursive"> IMAGINE SOMEWHERE YOU CAN HAVE A SNEAK PEEK OF ALL THE GREAT CONCEPTS AND IDEAS THAT 
+
+
+  <!-- Content -->
+  <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+    <div>
+      <h1 style="font-size:100px;font-family: 'Montserrat', sans-serif; margin-bottom:3%">MORINGA PITCH?</h1>
+    <p style="font-size:18px"> IMAGINE SOMEWHERE YOU CAN HAVE A SNEAK PEEK OF ALL THE GREAT CONCEPTS AND IDEAS THAT 
         HAVE BEEN DEVELOPED BY MORINGA STUDENTS. A PLACE WITH REFRESHING, CREATIVE IDEAS THAT CAN 
         CHANGE YOUR PERSPECTIVE ON HOW YOU VIEW THE WORLD AND ALL THAT IS IN IT.</p>
-    <p style="font-size:25px; font-family: 'Akronim', cursive"> WELL, IMAGINE NO MORE. YOU ARE ALREADY HERE.</p>    
+    <p style="font-size:18px"> WELL, IMAGINE NO MORE. YOU ARE ALREADY HERE.</p>
+    <a style="margin-bottom:12.4%" class="btn btn-green darken-2" href="/home" ><i class="fas fa-clone left"></i>Back Home</a>
+
+    </div>
   </div>
 
-  <div class="container">
-    
-         
-                  <img class="img-center img-thumbnail   " src="{{url_for('static', filename='m2.png' )}}" 
-                  height="400px;", width="1000px"/>
-          </div>
-      </div>
-      </div>  
-    </div>
+</div>
+
 
 
   {% endblock %}
