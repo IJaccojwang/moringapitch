@@ -4,7 +4,7 @@ from flask_migrate import Migrate, MigrateCommand
 from flask_admin.contrib.sqla import ModelView
 from app.models import User,Comment, Pitch
 
-app = create_app('development')
+app = create_app('production')
 manager = Manager(app)
 manager.add_command('server',Server)
 

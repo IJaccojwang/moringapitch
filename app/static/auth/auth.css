@@ -156,3 +156,17 @@ hr.type_5 {
   background-repeat: no-repeat;
   align-items: center;
 }
+.high{
+  /* background-image: url('https://wpmisc.com/sites/default/files/wallpaper/abstract/65839/abstract-blue-hd-wallpapers-65839-392128.jpg');
+  opacity: 0.8;
+  background-size: cover;
+  padding: 60px; */
+  width: 100%;
+  color: white;
+  font-size: 30px;
+  padding: 60px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 30px;
+}
