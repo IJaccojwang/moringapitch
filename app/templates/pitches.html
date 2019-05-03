@@ -3,15 +3,26 @@
 
 {% block content %}
 <div class="container">
+  <hr class="hr-light">
 <div class="row">
-  <div class="col-md-1"></div>
-  <div class="col-md-10">
-    
-    <hr>
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <!-- Card -->
+<div class="card card-cascade wider reverse">
+  <!-- Card content -->
+  <div class="card-body card-body-cascade text-center">
+
+    <!-- Title -->
+    <h4 class="card-title" style="font-size:50px;font-family: 'Montserrat', sans-serif; text-transform: uppercase;"><strong>{{cohort}}</strong></h4>
   </div>
-  <div class="col-md-1"></div>
+
+</div>
+<!-- Card -->
+  </div>
+  <div class="col-md-4"></div>
     
 </div>
+<hr>
 <div class="row">
     {% for pitch in pitches%}
     <div class="col-md-4">
@@ -42,7 +53,7 @@
         </ul>
       </div>
   </div>
-  <hr>
+  <hr class="hr-light">
     </div>
                 
                 

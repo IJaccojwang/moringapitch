@@ -30,7 +30,7 @@ def pitches(cohort):
     View root page function that returns the index page and its data
     '''
     pitches = Pitch.query.filter_by(cohort=cohort).order_by(Pitch.pitched_p.desc()).all()
-    return render_template('pitches.html', pitches=pitches)
+    return render_template('pitches.html', pitches=pitches,cohort=cohort)
 
 @main.route('/pitch/<int:id>')
 def pitch(id):
