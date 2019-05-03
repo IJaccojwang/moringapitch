@@ -3,50 +3,67 @@
 
 {% block content %}
 <div class="container">
-<div class="row">
-  <div class="col-md-1"></div>
-  <div class="col-md-10">
-    
-    <hr>
+
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+
+      <hr>
+    </div>
+    <div class="col-md-1"></div>
+
   </div>
-  <div class="col-md-1"></div>
-    
-</div>
-<div class="row">
+  <div class="row">
     {% for pitch in pitches%}
     <div class="col-md-4">
-<div class="card">
+      <div class="card">
 
-    <!-- Card image -->
-    <div class="view overlay">
-      <img class="card-img-top" src="http://disrupt-africa.com/wp-content/uploads/2015/01/Moringa-School-logo-2.png" alt="Card image cap">
-      <a>
-        <div class="mask rgba-white-slight"></div>
-      </a>
-    </div>
-    <div class="card-body light-green darken-2 text-white">
-        <h5 class="card-title">{{pitch.title}}</h5>
-      <hr>
-      <p style="font-size:13px;text-align: justify"> {{pitch.description|truncate(60)}} </p>
-      <a href="/pitch/{{pitch.id}}" class="white-text d-flex justify-content-end"><p>More <i class="fas fa-angle-double-right"></i></p></a>
-      <a href="{{url_for('main.new_comment',pitch_id = pitch.id)}}" class="btn btn-light-green darken-1">Comments</a>
+        <!-- Card image -->
+        <div class="view overlay">
+          <img class="card-img-top" src="http://disrupt-africa.com/wp-content/uploads/2015/01/Moringa-School-logo-2.png"
+            alt="Card image cap">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+        <div class="card-body light-green darken-2 text-white">
+          <h5 class="card-title">{{pitch.title}}</h5>
+          <hr>
+          <p style="font-size:13px;text-align: justify"> {{pitch.description|truncate(60)}} </p>
+          <a href="/pitch/{{pitch.id}}" class="white-text d-flex justify-content-end">
+            <p>More <i class="fas fa-angle-double-right"></i></p>
+          </a>
+          <a href="{{url_for('main.new_comment',pitch_id = pitch.id)}}"
+            class="btn btn-light-green darken-1">Comments</a>
 
-  
-    </div>
-    <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
-        <ul class="list-unstyled list-inline font-small">
-          <li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>{{pitch.pitched_p}}</li>
-          <li class="list-inline-item pr-2">
-            <a class="white-text" href="{{url_for('main.star',pitch_id = pitch.id)}}"><i class="far fa-star"></i> Stars {{pitch.stars.count()}} </a></li> 
-          <input type=hidden value="{{ next or '' }}" name=next>
-        </ul>
+
+        </div>
+        <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
+          <ul class="list-unstyled list-inline font-small">
+            <li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>{{pitch.pitched_p}}</li>
+            <li class="list-inline-item pr-2">
+              <a class="white-text" href="{{url_for('main.star',pitch_id = pitch.id)}}"><i class="far fa-star"></i>
+                Stars {{pitch.stars.count()}} </a></li>
+            <input type=hidden value="{{ next or '' }}" name=next>
+          </ul>
+        </div>
       </div>
-  </div>
-  <hr>
+      <hr>
     </div>
-                
-                
+
+
     {% endfor %}
+  </div>
 </div>
-</div>
+<!-- Footer -->
+<footer class="page-footer font-small light-green darken-2">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2019 Copyright:
+    <a href="https://mdbootstrap.com/education/bootstrap/"> MoringaPitch</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
 {% endblock %}
